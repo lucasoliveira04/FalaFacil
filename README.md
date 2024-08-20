@@ -28,3 +28,10 @@ Estamos sempre abertos a contribuições! Se você tem ideias para novos recurso
 - [DeepL API](https://www.deepl.com/pro#developer)
 - [Speech Synthesis API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 - [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
+
+## Futuras Atualizações
+
+Estamos constantemente trabalhando para melhorar o FalaFacil. Aqui estão algumas das atualizações planejadas para o futuro:
+
+- **Frases Prontas e Comparação:** Em breve, o FalaFacil incluirá um recurso onde você poderá falar frases prontas. O tradutor mostrará o que você falou e comparará com a frase correta, exibindo a porcentagem de acerto. Este recurso ajudará a praticar a pronúncia e a melhorar a precisão na fala.
+
