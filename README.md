@@ -1,8 +1,26 @@
-# React + Vite
+## FalaFacil
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**O FalaFacil é uma plataforma open source projetada para ajudar você a praticar e aprimorar seu inglês de forma gratuita e autônoma.** 
 
-Currently, two official plugins are available:
+### Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Tradução e Pronúncia:** Traduza textos entre inglês e português e ouça a pronúncia correta das traduções.
+- **Reconhecimento de Fala:** Utilize a funcionalidade de reconhecimento de fala para converter sua fala em texto e traduzir automaticamente.
+- **Interface Intuitiva:** Interface amigável e fácil de usar para uma experiência de aprendizado mais eficaz.
+- **Atualizações Contínuas:** O projeto está em constante evolução, com novos recursos e melhorias baseadas no feedback dos usuários.
+
+### Como Funciona
+
+1. **Digite ou Fale o Texto:** Insira o texto que deseja traduzir ou use a função de reconhecimento de fala para capturar o texto falado.
+2. **Escolha os Idiomas:** Selecione o idioma de origem e o idioma de destino.
+3. **Obtenha a Tradução:** Receba a tradução e ouça a pronúncia do texto traduzido.
+
+### Contribua
+
+Estamos sempre abertos a contribuições! Se você tem ideias para novos recursos, melhorias ou correções, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+### Tecnologias Usadas
+
+- [DeepL API](https://www.deepl.com/pro#developer)
+- [Speech Synthesis API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
