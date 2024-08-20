@@ -1,17 +1,47 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const MainComponent = () => {
     const [text, setText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [placeholder, setPlaceholder] = useState('Digite o texto para traduzir');
+    const [buttonTextTraduzir, setButtonTextTraduzir] = useState('')
+    const [buttonTextTraduzirLoading, setButtonTextTraduzirLoading] = useState('')
+    const [buttonMicrophoneTraduzir, setButtonMicrophoneTraduzir] = useState('')
+    const [buttonMicrophoneTraduzirLoading, setButtonMicrophoneTraduzirLoading] = useState('')
     const [isListening, setIsListening] = useState(false);
     const [sourceLang, setSourceLang] = useState('PT'); 
     const [targetLang, setTargetLang] = useState('EN'); 
     const apiKey = import.meta.env.VITE_API;
 
+    // Sincroniza os idiomas quando o sourceLang é alterado
+    useEffect(() => {
+        if (sourceLang === 'PT') {
+            setTargetLang('EN');
+            setPlaceholder("Digite o texto para traduzir")
+            setButtonTextTraduzir("Converter")
+            setButtonTextTraduzirLoading("Convertendo...")
+            setButtonMicrophoneTraduzir("Falar")
+            setButtonMicrophoneTraduzirLoading("Ouvindo...")
+        } else {
+            setTargetLang('PT');
+            setPlaceholder("Enter text to translate")
+            setButtonTextTraduzir("Convert")
+            setButtonTextTraduzirLoading("Converting...")
+            setButtonMicrophoneTraduzir("Talk")
+            setButtonMicrophoneTraduzirLoading("Listening...")
+        }
+    }, [sourceLang]);
+
     const handleTranslate = async () => {
+        if (text.trim() === ''){
+            setPlaceholder("Por favor, digite algo");
+            console.log(placeholder);
+            return;
+        }
+
         setLoading(true);
         setError(null);
 
@@ -36,10 +66,11 @@ export const MainComponent = () => {
         } finally {
             setLoading(false);
         }
+        
     };
 
     const speakText = (text) => {
-        if ('speechSynthesis' in window){
+        if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = targetLang === 'PT' ? 'pt-BR' : 'en-US';
             window.speechSynthesis.speak(utterance);
@@ -50,7 +81,7 @@ export const MainComponent = () => {
     };
 
     const startListening = () => {
-        if ('webkitSpeechRecognition' in window){
+        if ('webkitSpeechRecognition' in window) {
             const recognition = new window.webkitSpeechRecognition();
             recognition.lang = sourceLang === 'PT' ? 'pt-BR' : 'en-US';
             recognition.interimResults = false;
@@ -79,6 +110,7 @@ export const MainComponent = () => {
         }
     };
 
+    
     return (
         <main className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
             <div className="mb-6">
@@ -113,8 +145,8 @@ export const MainComponent = () => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     className="block w-full border border-gray-300 rounded-lg p-3 text-gray-700 mb-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Digite o texto para traduzir"
-                    aria-label="Digite o texto para traduzir"
+                    placeholder={placeholder}
+                    aria-label={sourceLang === 'PT' ? 'Digite o texto para traduzir' : 'Enter text to translate'}
                 />
             </div>
 
@@ -122,18 +154,18 @@ export const MainComponent = () => {
                 <button
                     onClick={handleTranslate}
                     className={`flex-1 py-2 px-4 rounded-lg text-white ${loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition duration-300`}
-                    disabled={loading}
+                    disabled={loading || text.trim() === ''}
                     aria-live="polite"
                 >
-                    {loading ? 'Convertendo...' : 'Converter'}
+                    {loading ? buttonTextTraduzirLoading : buttonTextTraduzir}
                 </button>
                 <button
                     onClick={startListening}
                     className={`flex-1 py-2 px-4 rounded-lg text-white ${isListening ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600'} transition duration-300`}
                     disabled={isListening}
-                    aria-label={isListening ? 'Ouvindo...' : 'Falar'}
+                    aria-label={isListening ? buttonMicrophoneTraduzirLoading : buttonMicrophoneTraduzir}
                 >
-                    {isListening ? 'Ouvindo...' : 'Falar'}
+                    {isListening ? buttonMicrophoneTraduzirLoading : buttonMicrophoneTraduzir}
                 </button>
             </div>
 
