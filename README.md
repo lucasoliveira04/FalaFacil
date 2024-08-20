@@ -2,6 +2,10 @@
 
 **O FalaFacil é uma plataforma open source projetada para ajudar você a praticar e aprimorar seu inglês de forma gratuita e autônoma.** 
 
+**Status:** Em versão Beta
+
+Este projeto está atualmente em fase de beta, o que significa que está em desenvolvimento ativo e pode haver mudanças ou melhorias contínuas. Agradecemos seu feedback e sugestões para aprimorar a plataforma!
+
 ### Funcionalidades
 
 - **Tradução e Pronúncia:** Traduza textos entre inglês e português e ouça a pronúncia correta das traduções.
