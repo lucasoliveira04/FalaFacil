@@ -9,7 +9,7 @@ export const MainComponent = () => {
     const [isListening, setIsListening] = useState(false);
     const [sourceLang, setSourceLang] = useState('PT'); 
     const [targetLang, setTargetLang] = useState('EN'); 
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API;
 
     const handleTranslate = async () => {
         setLoading(true);
